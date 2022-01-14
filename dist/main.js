@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{const e=document.querySelector(".modal-callback"),l=document.querySelector(".modal-overlay");document.querySelectorAll(".callback-btn").forEach((c=>{c.addEventListener("click",(()=>{e.style.display="block",l.style.display="block"}))}))})()})();
