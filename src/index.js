@@ -5,6 +5,7 @@ import carousel from './modules/carousel';
 import accordeon from './modules/accordeon';
 import scrollUp from './modules/scrollUp';
 import validation from './modules/validation';
+import sendForm from './modules/sendForm';
 
 modal();
 scrollSection();
@@ -13,3 +14,4 @@ carousel();
 accordeon();
 scrollUp();
 validation();
+sendForm();
