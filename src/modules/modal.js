@@ -1,10 +1,11 @@
 const modal = () => {
   const modal = document.querySelector('.modal-callback');
   const modalOverlay = document.querySelector('.modal-overlay');
-  const callbackBtn = document.querySelectorAll('.callback-btn');
+  const modalBtn = document.querySelectorAll('.fancyboxModal');
 
-  callbackBtn.forEach((btn) => {
-    btn.addEventListener('click', () => {
+  modalBtn.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
       modal.style.display = 'block';
       modalOverlay.style.display = 'block';
     });
