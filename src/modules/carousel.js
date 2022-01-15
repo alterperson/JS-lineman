@@ -1,4 +1,4 @@
-const ourServices = () => {
+const carousel = () => {
   const arrowRight = document.querySelector('.arrow-right');
   const arrowLeft = document.querySelector('.arrow-left');
   const servicesCarousel = document.querySelector('.services-carousel');
@@ -22,4 +22,4 @@ const ourServices = () => {
   });
 };
 
-export default ourServices;
+export default carousel;
