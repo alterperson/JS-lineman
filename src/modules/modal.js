@@ -9,6 +9,13 @@ const modal = () => {
       modalOverlay.style.display = 'block';
     });
   });
+
+  document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('modal-overlay') || event.target.closest('.modal-close')) {
+      modal.style.display = 'none';
+      modalOverlay.style.display = 'none';
+    }
+  });
 };
 
 export default modal;
