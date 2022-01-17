@@ -9,15 +9,9 @@ const sendForm = () => {
   const successText = 'Форма успешно отправлена!';
 
   const regName = /[^а-яё ]/gi;
-  const regTel = /\D+/gi;
+  const regTel = /^((\+7|7|8)+([0-9]))$/gi;
 
   statusBlock.style.color = '#000000';
-
-  const requireInputs = () => {
-    formElements.forEach((input) => {
-      input.setAttribute('required', true);
-    });
-  };
 
   const validate = (list) => {
     let success = true;
@@ -86,7 +80,6 @@ const sendForm = () => {
   };
 
   try {
-    requireInputs();
     if (!form) {
       throw new Error('Неверно указана форма');
     }
