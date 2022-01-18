@@ -4,8 +4,8 @@ const validation = () => {
   const inputFio = document.querySelector('input[name=fio]');
   const inputTel = document.querySelector('input[name=tel]');
 
-  const regName = /[^а-яё ]/gi;
-  const regTel = /^((\+7|7|8)+([0-9]))$/gi;
+  const regName = /[^[а-яА-ЯёЁ ]*/g;
+  const regTel = /[^[0-9+]*/g;
 
   const requireInputs = () => {
     formElements.forEach((input) => {
@@ -24,8 +24,9 @@ const validation = () => {
   formElements.forEach((input) => {
     input.addEventListener('input', (event) => {
       if (input.name == 'fio') {
+        event.target.value = event.target.value.charAt(0).toUpperCase() + event.target.value.substr(1);
+        event.target.value = event.target.value.replace(/^\s+|\s+$/g, '');
         event.target.value = event.target.value.replace(regName, '');
-        event.target.value = event.target.value.charAt(0).toUpperCase() + event.target.value.substr(1).toLowerCase();
       }
 
       if (input.name == 'tel') {

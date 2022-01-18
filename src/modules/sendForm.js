@@ -8,30 +8,7 @@ const sendForm = () => {
   const errorText = 'Ошибка...';
   const successText = 'Форма успешно отправлена!';
 
-  const regName = /[^а-яё ]/gi;
-  const regTel = /^((\+7|7|8)+([0-9]))$/gi;
-
   statusBlock.style.color = '#000000';
-
-  const validate = (list) => {
-    let success = true;
-
-    list.forEach((input) => {
-      if (input.name === 'fio') {
-        if (regName.test(input.value)) {
-          success = false;
-        }
-      }
-
-      if (input.name === 'tel') {
-        if (regTel.test(input.value)) {
-          success = false;
-        }
-      }
-    });
-
-    return success;
-  };
 
   const sendData = (data) => {
     return fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -54,29 +31,25 @@ const sendForm = () => {
       formBody[key] = val;
     });
 
-    if (validate(formElements)) {
-      sendData(formBody)
-        .then((data) => {
-          statusBlock.textContent = successText;
+    sendData(formBody)
+      .then((data) => {
+        statusBlock.textContent = successText;
 
-          setTimeout(() => {
-            modal.style.display = 'none';
-            modalOverlay.style.display = 'none';
-            statusBlock.textContent = '';
-          }, 2000);
+        setTimeout(() => {
+          modal.style.display = 'none';
+          modalOverlay.style.display = 'none';
+          statusBlock.textContent = '';
+        }, 2000);
 
-          formElements.forEach((input) => {
-            if (input.type !== 'submit') {
-              input.value = '';
-            }
-          });
-        })
-        .catch((error) => {
-          statusBlock.textContent = errorText;
+        formElements.forEach((input) => {
+          if (input.type !== 'submit') {
+            input.value = '';
+          }
         });
-    } else {
-      alert('Данные не валидны');
-    }
+      })
+      .catch((error) => {
+        statusBlock.textContent = errorText;
+      });
   };
 
   try {
